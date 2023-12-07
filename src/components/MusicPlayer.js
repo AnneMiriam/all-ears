@@ -9,31 +9,29 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import SongItem from './SongItem';
 // import { useMusicContext } from './MusicContext';
-import frozen from "../music/LetItGo.mp3"
-import phil from "../music/In-the-Air-Tonight.mp3";
-import untold from "../music/Untold-Stories.mp3";
-import james from "../music/GetUpOffaThatThing.mp3"
+import { useMusicContext } from './MusicContext';
+// import phil from "../music/In-the-Air-Tonight.mp3";
+// import untold from "../music/Untold-Stories.mp3";
+// import james from "../music/GetUpOffaThatThing.mp3"
 
 
 function MusicPlayer() {
-
-  const songs = [james, frozen, phil, untold]
-
-
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
-
+//   const songs = [james, frozen, phil, untold]
+  const {currentSongIndex, isPlaying, songs, setCurrentSongIndex, setIsPlaying} = useMusicContext();
   const song = songs[currentSongIndex]
   const audioRef = useRef();
-  const [isPlaying, setIsPlaying] = useState(false)
+//   const [isPlaying, setIsPlaying] = useState(false)
 
   useEffect(() => {
-    audioRef.current.src = songs[currentSongIndex];
+    audioRef.current.src = song.song;
     if (isPlaying) {
         audioRef.current.play();
     }
-  }, [currentSongIndex, isPlaying, songs]);
+   
+  }, [currentSongIndex, isPlaying, songs, song.song]);
+  
 
-  const playPauseHandler = () => {
+const playPauseHandler = () => {
     if (audioRef.current.paused) {
       audioRef.current.play();
       setIsPlaying(true)
@@ -42,7 +40,6 @@ function MusicPlayer() {
       setIsPlaying(false)
     }
   };
-
 
   const nextSongHandler = () => {
     setCurrentSongIndex((prevIndex) => (prevIndex + 1) % songs.length);
@@ -131,19 +128,5 @@ function MusicPlayer() {
           </Box>
       </Box>
   );
-    // <div>
-    //     <footer>
-    //     <audio ref={audioRef} controls  />
-    //     <div>
-    //         <p>Now Playing: {songs[currentSongIndex]}</p>
-    //       <button onClick={prevSongHandler}>Previous</button>
-    //       <button onClick={playPauseHandler}>
-    //         {isPlaying ? "Pause" : "Play"}
-    //       </button>
-    //       <button onClick={nextSongHandler}>Next</button>
-    //     </div>
-    
-    //     </footer>
-    // </div>
 }
 export default MusicPlayer;

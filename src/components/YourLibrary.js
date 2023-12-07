@@ -1,16 +1,16 @@
 import React from "react";
-// import MusicPlayer from "./MusicPlayer";
 // import NavBar from "./NavBar";
 import { useMusicContext } from "./MusicContext";
+import MusicPlayer from "./MusicPlayer";
 
 function YourLibrary() {
-  const {
-    currentSongIndex,
-    isPlaying,
-    playPauseHandler,
-    nextSongHandler,
-    prevSongHandler,
-  } = useMusicContext();
+  // const {
+  //   currentSongIndex,
+  //   isPlaying,
+  //   playPauseHandler,
+  //   nextSongHandler,
+  //   prevSongHandler,
+  // } = useMusicContext();
 
   return (
 
@@ -18,6 +18,7 @@ function YourLibrary() {
       <h1>
         Your Library
       </h1>
+      <MusicPlayer useMusicContext={useMusicContext} />
     </div>
 
   );
