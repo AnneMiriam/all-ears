@@ -13,6 +13,7 @@ import taylor from "../music/YoureLosingMe.mp3";
 import tyla from "../music/Water.mp3";
 import bey from "../music/MyHouse.mp3";
 import republic from "../music/CountingStars.mp3"
+import nicki from "../music/PinkFridayGirls.mp3"
 
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -22,6 +23,14 @@ function formatTime(seconds) {
 
 function MusicPlayer() {
   const songs = [
+    {
+      song: nicki,
+      title: "Pink Friday 2",
+      artist: "Nicki Minaj",
+      minutes: 2,
+      seconds: 46,
+      image: "https://t2.genius.com/unsafe/600x600/https%3A%2F%2Fimages.genius.com%2F8796e755beff715f686260db73ce3435.1000x1000x1.png",
+    },
     {
       song: tyla,
       title: "Water",
