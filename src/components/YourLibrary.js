@@ -13,6 +13,7 @@ import AlbumPlaylistItem from "./AlbumPlaylistItem";
 
 function YourLibrary({getAccessToken, spotifyAPI}) {
 
+
   const [selectedTab, setSelectedTab] = useState(0);
 
   const {
@@ -194,17 +195,17 @@ function YourLibrary({getAccessToken, spotifyAPI}) {
               '& .MuiTab-root': {
                 height: 'auto',
                 alignItems: 'center',
-                margin: '15px 12px',
+                margin: '15px 30px',
               },
             }}
           >
             {['Songs', 'Albums', 'Artists', 'Playlists'].map((label, index) => (
               <Tab
                 key={label}
-                label={
-                  <span>
-                    {label} <span className="count">{[songData, albumData, artistData, playlistData][index].length}</span>
-                  </span>
+                label={label
+                  // <span>
+                  //   {label} <span className="count">{[songData, albumData, artistData, playlistData][index].length}</span>
+                  // </span>
                 }
                 sx={tabStyle(selectedTab === index)} // Added padding
               />
@@ -216,7 +217,7 @@ function YourLibrary({getAccessToken, spotifyAPI}) {
       {selectedTab === 0 && (
         <>
           <Typography variant="h5">Popular Songs</Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
             {songs.map((song, index) => (
               <SongMedium 
                 song={song}
@@ -230,7 +231,7 @@ function YourLibrary({getAccessToken, spotifyAPI}) {
       {selectedTab === 1 && (
         <>
           <Typography variant="h5">Top Albums</Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
             {albums.map((album, index) => (
               <AlbumPlaylistItem
                 key={index}
